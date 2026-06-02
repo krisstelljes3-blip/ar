@@ -1,97 +1,110 @@
-<!DOCTYPE html>
-<html lang="de">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Impressum · Game Changer Society</title>
-<meta name="robots" content="noindex">
-<link rel="stylesheet" href="fonts.css">
+<!DOCTYPE html><html lang="de"><head><meta charset="UTF-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Impressum — AuftragsRadar</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;500;600;700;800&family=Newsreader:ital,opsz@1,6..72&display=swap" rel="stylesheet">
 <style>
-  :root{
-    --bg:#0a0a0b; --ink:#f4f1ea; --ink-soft:#a8a39a; --ink-faint:#6b665e;
-    --gold:#c9a35b; --gold-bright:#e3c486; --line:rgba(201,163,91,.16);
-  }
-  *{margin:0;padding:0;box-sizing:border-box}
-  body{background:var(--bg);color:var(--ink);font-family:'Inter',sans-serif;font-weight:300;line-height:1.8;-webkit-font-smoothing:antialiased;padding:0 28px}
-  .wrap{max-width:720px;margin:0 auto;padding:90px 0 120px}
-  .back{display:inline-block;margin-bottom:54px;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--ink-faint);text-decoration:none;border-bottom:1px solid var(--line);padding-bottom:3px;transition:color .4s}
-  .back:hover{color:var(--gold-bright)}
-  h1{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(30px,5vw,44px);letter-spacing:-.01em;margin-bottom:40px;color:var(--ink)}
-  h2{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:22px;color:var(--gold-bright);margin:40px 0 12px}
-  p{font-size:15px;color:var(--ink-soft);margin-bottom:14px}
-  p strong{color:var(--ink);font-weight:400}
-  a{color:var(--gold);text-decoration:none;border-bottom:1px solid var(--line)}
-  a:hover{color:var(--gold-bright)}
-  .rule{height:1px;background:var(--line);margin:46px 0}
-  .small{font-size:13px;color:var(--ink-faint);line-height:1.75}
-</style>
-</head>
-<body>
-  <div class="wrap">
-    <a class="back" href="index.html">&larr; Zurück</a>
+:root{--bg:#f7f4ee;--bg2:#efe9df;--panel:#fffdf9;--line:#e2dacb;--line2:#ebe4d6;
+--ink:#20242b;--ink-soft:#565b62;--muted:#7a879f;--petrol:#1f5e63;--petrol-deep:#164a4e;
+--petrol-soft:#e6efee;--ochre:#bd7e22}
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:'Libre Franklin',sans-serif;font-size:17px;line-height:1.66;-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-weight:800;line-height:1.15;letter-spacing:-.02em}
+.wrap{max-width:780px;margin:0 auto;padding:0 26px}
+.topbar{position:sticky;top:0;z-index:100;background:rgba(247,244,238,.86);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.topbar .wrap{max-width:1120px;display:flex;align-items:center;justify-content:space-between;height:72px}
+.logo{display:flex;align-items:center;gap:11px;text-decoration:none;color:var(--ink)}
+.logo .mark{width:32px;height:32px;border:2px solid var(--petrol);border-radius:7px;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:2px;padding:5px}
+.logo .mark i{background:var(--petrol);border-radius:1px;opacity:.85}
+.logo .name{font-weight:800;font-size:21px;letter-spacing:-.02em;line-height:1}
+.logo .sub{font-family:'Newsreader',serif;font-style:italic;font-size:14px;color:var(--ink-soft)}
+.back{font-size:15px;font-weight:600;color:var(--petrol);text-decoration:none}
+.back:hover{text-decoration:underline}
+main{padding:60px 0 80px}
+.eyebrow{font-family:'Newsreader',serif;font-style:italic;font-size:19px;color:var(--petrol)}
+main h1{font-size:clamp(30px,5vw,42px);margin:10px 0 30px}
+main h2{font-size:21px;margin:38px 0 12px}
+main h3{font-size:17px;margin:24px 0 8px}
+main p{margin-bottom:14px;color:var(--ink-soft)}
+main strong{color:var(--ink)}
+main a{color:var(--petrol);text-decoration:underline}
+main ul{margin:0 0 14px 22px;color:var(--ink-soft)}
+main li{margin-bottom:7px}
+.addr{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:24px 28px;margin-bottom:14px;color:var(--ink)}
+.addr p{color:var(--ink);margin-bottom:4px}
+.upd{font-size:14px;color:var(--muted);margin-top:40px;border-top:1px solid var(--line);padding-top:18px}
+footer{border-top:1px solid var(--line);background:var(--bg2)}
+footer .wrap{max-width:1120px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:18px;padding:30px 26px;font-size:14px;color:var(--ink-soft)}
+footer a{color:var(--ink-soft);text-decoration:none}footer a:hover{color:var(--petrol)}
+</style></head><body>
+<header class="topbar"><div class="wrap">
+<a class="logo" href="/"><span class="mark"><i></i><i></i><i></i><i></i></span>
+<span><span class="name">AuftragsRadar</span><br><span class="sub">für Solarbetriebe</span></span></a>
+<a class="back" href="/">← Zurück zur Startseite</a>
+</div></header>
+<main><div class="wrap">
+<span class="eyebrow">Rechtliche Angaben</span>
+<h1>Impressum</h1>
 
-    <h1>Impressum</h1>
+<h2>Angaben gemäß § 5 DDG</h2>
+<div class="addr">
+<p><strong>Ad Meliora eG</strong></p>
+<p>Flensburger Straße 26</p>
+<p>40468 Düsseldorf</p>
+<p>Deutschland</p>
+</div>
 
-    <h2>Angaben gemäß § 5 DDG</h2>
-    <p>
-      <strong>AF Media Services GmbH</strong><br>
-      Opladener Str. 149<br>
-      40789 Monheim am Rhein<br>
-      Deutschland
-    </p>
+<h2>Vertreten durch</h2>
+<p>Vorstand: Alina Iljicev</p>
 
-    <h2>Vertreten durch</h2>
-    <p>Geschäftsführerin: Alina Iljicev</p>
+<h2>Registereintrag</h2>
+<p>Eingetragen im Genossenschaftsregister<br>
+Registergericht: Amtsgericht Düsseldorf<br>
+Registernummer: GnR 558</p>
 
-    <h2>Registereintrag</h2>
-    <p>
-      Eintragung im Handelsregister<br>
-      Registergericht: Amtsgericht Düsseldorf<br>
-      Registernummer: HRB 92474
-    </p>
+<h2>Umsatzsteuer-Identifikationsnummer</h2>
+<p>USt-IdNr. gemäß § 27a Umsatzsteuergesetz:<br>
+DE368708356</p>
 
-    <h2>Umsatzsteuer</h2>
-    <p>
-      Umsatzsteuer-Identifikationsnummer gemäß § 27 a Umsatzsteuergesetz:<br>
-      USt-IdNr.: DE339650158
-    </p>
-    <p>
-      Steuernummer: 135/5701/2421<br>
-      Finanzamt Hilden
-    </p>
+<h2>Kontakt</h2>
+<p>E-Mail: <a href="mailto:info@auftrags-radar.de">info@auftrags-radar.de</a></p>
 
-    <h2>Kontakt</h2>
-    <p>
-      E-Mail: <a href="mailto:kontakt@af-media-services.de">kontakt@af-media-services.de</a>
-    </p>
+<h2>Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV</h2>
+<p>Alina Iljicev<br>
+Ad Meliora eG<br>
+Flensburger Straße 26, 40468 Düsseldorf</p>
 
-    <div class="rule"></div>
+<h2>Hinweis zur Marke „AuftragsRadar“</h2>
+<p>„AuftragsRadar“ ist ein Dienstleistungsangebot der Ad Meliora eG.</p>
 
-    <h2>Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV</h2>
-    <p>
-      Alina Iljicev<br>
-      Opladener Str. 149<br>
-      40789 Monheim am Rhein
-    </p>
+<h2>Streitschlichtung</h2>
+<p>Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit:
+<a href="https://ec.europa.eu/consumers/odr/" target="_blank" rel="noopener">https://ec.europa.eu/consumers/odr/</a>.
+Unsere E-Mail-Adresse finden Sie oben im Impressum.</p>
+<p>Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer
+Verbraucherschlichtungsstelle teilzunehmen.</p>
 
-    <h2>EU-Streitschlichtung</h2>
-    <p class="small">
-      Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit:
-      <a href="https://ec.europa.eu/consumers/odr/" target="_blank" rel="noopener">https://ec.europa.eu/consumers/odr/</a>.
-      Unsere E-Mail-Adresse finden Sie oben im Impressum.
-    </p>
+<h2>Haftung für Inhalte</h2>
+<p>Als Diensteanbieter sind wir gemäß § 7 Abs. 1 DDG für eigene Inhalte auf diesen Seiten nach den
+allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 DDG sind wir als Diensteanbieter jedoch nicht
+verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach Umständen zu
+forschen, die auf eine rechtswidrige Tätigkeit hinweisen. Verpflichtungen zur Entfernung oder Sperrung der
+Nutzung von Informationen nach den allgemeinen Gesetzen bleiben hiervon unberührt.</p>
 
-    <h2>Verbraucherstreitbeilegung / Universalschlichtungsstelle</h2>
-    <p class="small">
-      Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer
-      Verbraucherschlichtungsstelle teilzunehmen.
-    </p>
+<h2>Haftung für Links</h2>
+<p>Unser Angebot enthält ggf. Links zu externen Websites Dritter, auf deren Inhalte wir keinen Einfluss
+haben. Deshalb können wir für diese fremden Inhalte auch keine Gewähr übernehmen. Für die Inhalte der
+verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich.</p>
 
-    <div class="rule"></div>
-    <p class="small">
-      Hinweis: Dieses Impressum wurde nach bestem Wissen erstellt. Vor dem Live-Gang
-      bitte von einem Anwalt oder der zuständigen Person gegenlesen lassen.
-    </p>
-  </div>
-</body>
-</html>
+<h2>Urheberrecht</h2>
+<p>Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen
+Urheberrecht. Beiträge Dritter sind als solche gekennzeichnet. Die Vervielfältigung, Bearbeitung,
+Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen der
+schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers.</p>
+<p class="upd">Stand: Juni 2026</p>
+</div></main>
+<footer><div class="wrap">
+<a class="logo" href="/" style="font-size:13px"><span class="name" style="font-size:17px">AuftragsRadar</span></a>
+<div><a href="/">Start</a> &nbsp;·&nbsp; <a href="/impressum.html">Impressum</a> &nbsp;·&nbsp; <a href="/datenschutz.html">Datenschutz</a></div>
+</div></footer>
+</body></html>
