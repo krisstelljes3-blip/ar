@@ -1,0 +1,196 @@
+<!DOCTYPE html><html lang="de"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>AuftragsRadar für Solarbetriebe — Kein Angebot bleibt liegen</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;500;600;700;800&family=Newsreader:ital,opsz@1,6..72&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f7f4ee;--bg2:#efe9df;--panel:#fffdf9;--line:#e2dacb;--line2:#ebe4d6;
+--ink:#20242b;--ink-soft:#565b62;--muted:#7a879f;--petrol:#1f5e63;--petrol-deep:#164a4e;
+--petrol-soft:#e6efee;--ochre:#bd7e22;--ochre-soft:#f6ecd7;--green:#3a7d56;--green-soft:#e6f1ea;--red:#b5483b}
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:'Libre Franklin',sans-serif;font-size:18px;line-height:1.62;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+h1,h2,h3{font-weight:800;line-height:1.1;letter-spacing:-.02em}
+.wrap{max-width:1120px;margin:0 auto;padding:0 26px}
+.eyebrow{font-family:'Newsreader',serif;font-style:italic;font-size:19px;color:var(--petrol)}
+.btn{display:inline-flex;align-items:center;gap:9px;background:var(--petrol);color:#fff;font-weight:700;font-size:17px;padding:16px 30px;border:none;border-radius:8px;cursor:pointer;text-decoration:none;transition:transform .12s,background .2s,box-shadow .2s;box-shadow:0 8px 20px -10px rgba(31,94,99,.6)}
+.btn:hover{background:var(--petrol-deep);transform:translateY(-2px)}
+.btn-ghost{background:transparent;color:var(--ink);border:1.5px solid var(--line);box-shadow:none}
+.btn-ghost:hover{background:var(--panel);border-color:var(--petrol);color:var(--petrol)}
+.topbar{position:sticky;top:0;z-index:100;background:rgba(247,244,238,.86);backdrop-filter:blur(10px);border-bottom:1px solid transparent;transition:border-color .3s}
+.topbar.scrolled{border-color:var(--line)}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;height:72px}
+.logo{display:flex;align-items:center;gap:11px;text-decoration:none;color:var(--ink)}
+.logo .mark{width:32px;height:32px;border:2px solid var(--petrol);border-radius:7px;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:2px;padding:5px}
+.logo .mark i{background:var(--petrol);border-radius:1px;opacity:.85}
+.logo .name{font-weight:800;font-size:21px;letter-spacing:-.02em;line-height:1}
+.logo .sub{font-family:'Newsreader',serif;font-style:italic;font-size:14px;color:var(--ink-soft)}
+.topbar .btn{padding:11px 20px;font-size:15px}
+.navhide{display:none}@media(min-width:820px){.navhide{display:inline-flex}}
+.hero{padding:74px 0 60px}
+.hero-grid{display:grid;gap:48px}@media(min-width:960px){.hero-grid{grid-template-columns:1.05fr .95fr;align-items:center}}
+.tagline{display:inline-flex;align-items:center;gap:9px;background:var(--panel);border:1px solid var(--line);border-radius:30px;padding:7px 15px;font-size:14px;font-weight:600;color:var(--petrol);margin-bottom:22px}
+.tagline .d{width:7px;height:7px;border-radius:50%;background:var(--green)}
+.hero h1{font-size:clamp(34px,5.2vw,56px);margin-bottom:22px}
+.hero p.lead{font-size:20px;color:var(--ink-soft);max-width:540px;margin-bottom:28px}
+.hero-cta{display:flex;flex-wrap:wrap;gap:13px;margin-bottom:18px}
+.cc-line{display:flex;gap:11px;align-items:flex-start;background:var(--petrol-soft);border:1px solid #cfe0df;border-radius:10px;padding:15px 18px;font-size:15.5px;color:var(--petrol-deep);font-weight:600;max-width:540px}
+.cc-line .ic{flex:0 0 auto;font-size:18px}
+.rcard{background:var(--panel);border:1px solid var(--line);border-radius:14px;box-shadow:0 30px 60px -34px rgba(32,36,43,.35);overflow:hidden}
+.rcard .rh{padding:18px 22px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;background:var(--bg2)}
+.rcard .rh .lbl{font-family:'Newsreader',serif;font-style:italic;font-size:15px;color:var(--ink-soft)}
+.rcard .rh .t{font-weight:800;font-size:16px;margin-top:1px}
+.rcard .rh .wk{font-size:13px;font-weight:700;color:var(--petrol);background:var(--petrol-soft);padding:5px 11px;border-radius:6px}
+.rcard .open{padding:22px;text-align:center;border-bottom:1px solid var(--line)}
+.rcard .open .cap{font-size:13px;text-transform:uppercase;letter-spacing:.12em;color:var(--ink-soft);font-weight:600}
+.rcard .open .big{font-weight:800;font-size:clamp(32px,5.5vw,44px);color:var(--ochre);line-height:1.1;margin-top:6px;font-variant-numeric:tabular-nums}
+.rcard .grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line)}
+.rcard .cell{background:var(--panel);padding:15px 20px}
+.rcard .cell .n{font-weight:800;font-size:22px;font-variant-numeric:tabular-nums}
+.rcard .cell .k{font-size:13px;color:var(--ink-soft);margin-top:1px}
+.rcard .cell.heiss .n{color:var(--ochre)}.rcard .cell.fass .n{color:var(--petrol)}
+.rcard .cell.won .n{color:var(--green)}.rcard .cell.lost .n{color:var(--red)}
+.proof{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--bg2)}
+.proof .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:14px 38px;padding:22px 26px;font-size:14.5px;font-weight:500;color:var(--ink-soft)}
+.proof b{color:var(--ink);font-weight:800;font-size:16px;margin-right:3px}
+section{padding:80px 0}.sec-head{max-width:720px;margin-bottom:44px}.sec-head.center{text-align:center;margin-left:auto;margin-right:auto}
+.sec-head h2{font-size:clamp(27px,4vw,40px);margin:12px 0 14px}.sec-head p{font-size:19px;color:var(--ink-soft)}
+.pcards{display:grid;gap:18px}@media(min-width:760px){.pcards{grid-template-columns:repeat(3,1fr)}}
+.pcard{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:26px}
+.pcard .ic{width:42px;height:42px;border-radius:10px;background:var(--ochre-soft);display:grid;place-items:center;font-size:20px;margin-bottom:14px}
+.pcard h3{font-size:18px;font-weight:700;margin-bottom:7px}.pcard p{font-size:15px;color:var(--ink-soft)}
+.steps{display:grid;gap:22px}@media(min-width:760px){.steps{grid-template-columns:repeat(3,1fr)}}
+.step{background:var(--panel);border:1px solid var(--line);border-radius:13px;padding:30px 26px}
+.step .num{width:40px;height:40px;border-radius:10px;background:var(--petrol);color:#fff;font-weight:800;font-size:18px;display:grid;place-items:center;margin-bottom:16px}
+.step h3{font-size:19px;font-weight:700;margin-bottom:8px}.step p{font-size:15px;color:var(--ink-soft)}
+.crm-box{max-width:840px;margin:0 auto;background:var(--panel);border:1px solid var(--line);border-left:4px solid var(--petrol);border-radius:12px;padding:38px 40px}
+.crm-box h2{font-size:clamp(23px,3.2vw,32px);margin-bottom:16px}.crm-box p{font-size:18px;color:var(--ink-soft)}
+.crm-box .ask{margin-top:16px;display:grid;gap:8px}.crm-box .ask div{display:flex;gap:11px;font-size:17px;font-weight:600;color:var(--ink)}.crm-box .ask .q{color:var(--petrol);font-weight:800}
+.icp-grid{display:grid;gap:20px}@media(min-width:720px){.icp-grid{grid-template-columns:1fr 1fr}}
+.icp-card{border-radius:14px;padding:32px 30px;border:1px solid var(--line)}
+.icp-card.yes{background:linear-gradient(180deg,var(--green-soft),var(--panel));border-color:#bcdcc8}.icp-card.no{background:var(--panel)}
+.icp-card h3{font-size:20px;font-weight:800;margin-bottom:18px;display:flex;align-items:center;gap:10px}
+.icp-card.yes h3 .i{color:var(--green)}.icp-card.no h3 .i{color:var(--red)}
+.icp-card ul{list-style:none;display:grid;gap:11px}.icp-card li{display:flex;gap:11px;font-size:16px;color:var(--ink-soft)}
+.icp-card.yes li .m{color:var(--green);font-weight:800;flex:0 0 16px}.icp-card.no li .m{color:var(--red);font-weight:800;flex:0 0 16px}
+.offer-card{max-width:680px;margin:0 auto;background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:44px 42px;box-shadow:0 30px 60px -38px rgba(32,36,43,.3)}
+.offer-card .tag{display:inline-block;font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--petrol);background:var(--petrol-soft);padding:6px 13px;border-radius:6px;margin-bottom:18px}
+.offer-card h3{font-size:25px;margin-bottom:10px}.offer-card .pdesc{font-size:17px;color:var(--ink-soft);margin-bottom:24px}
+.offer-card ul{list-style:none;display:grid;gap:11px;margin-bottom:26px}.offer-card li{display:flex;gap:12px;font-size:16px}.offer-card li .c{color:var(--green);font-weight:800;flex:0 0 18px;margin-top:2px}.offer-card li.opt{color:var(--ink-soft)}
+.priceline{padding:20px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-bottom:24px;font-size:18px}.priceline b{font-weight:800;font-size:21px}.priceline .m{color:var(--petrol)}
+.offer-card .btn{width:100%;justify-content:center}
+.roi{text-align:center;font-size:15px;color:var(--ink-soft);max-width:600px;margin:26px auto 0}.roi b{color:var(--ink)}
+.faq-list{max-width:780px;margin:0 auto}.faq-item{border:1px solid var(--line);border-radius:12px;margin-bottom:12px;background:var(--panel);overflow:hidden}
+.faq-q{width:100%;text-align:left;background:none;border:none;cursor:pointer;padding:21px 24px;font-weight:700;font-size:18px;color:var(--ink);display:flex;justify-content:space-between;gap:18px;align-items:center}
+.faq-q .pm{flex:0 0 24px;transition:transform .25s;color:var(--petrol);font-size:22px}.faq-item.open .faq-q .pm{transform:rotate(45deg)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .3s ease}.faq-a p{padding:0 24px 21px;font-size:16px;color:var(--ink-soft)}
+.final{text-align:center;background:var(--petrol);color:#fff}.final .eyebrow{color:#a9d3cf}
+.final h2{color:#fff;font-size:clamp(28px,4.2vw,44px);max-width:720px;margin:8px auto 16px}
+.final p{font-size:19px;color:#cfe5e2;max-width:560px;margin:0 auto 30px}
+.final .btn{background:#fff;color:var(--petrol-deep)}.final .btn:hover{background:var(--bg2)}
+footer{background:var(--ink);color:#9aa0a8;padding:46px 0;font-size:14px}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:18px;align-items:center}
+footer .logo .name{color:#fff}footer .logo .sub{color:#9aa0a8}footer .logo .mark{border-color:#9aa0a8}footer .logo .mark i{background:#9aa0a8}
+footer a{color:#b8bdc4;text-decoration:none}footer a:hover{color:#fff}
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .7s cubic-bezier(.2,.7,.3,1),transform .7s cubic-bezier(.2,.7,.3,1)}.reveal.in{opacity:1;transform:none}
+/* hub */
+.vgrid{display:grid;gap:18px}@media(min-width:680px){.vgrid{grid-template-columns:repeat(2,1fr)}}@media(min-width:1000px){.vgrid{grid-template-columns:repeat(3,1fr)}}
+.vcard{display:block;text-decoration:none;color:var(--ink);background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:28px;transition:transform .15s,box-shadow .2s,border-color .2s}
+.vcard:hover{transform:translateY(-3px);box-shadow:0 20px 40px -24px rgba(32,36,43,.35);border-color:var(--petrol)}
+.vcard .ic{width:46px;height:46px;border-radius:11px;background:var(--petrol-soft);display:grid;place-items:center;font-size:22px;margin-bottom:14px}
+.vcard h3{font-size:20px;margin-bottom:6px}.vcard p{font-size:15px;color:var(--ink-soft)}
+.vcard .go{margin-top:14px;font-weight:700;color:var(--petrol);font-size:15px}
+</style></head><body><style>.repbig{max-width:760px;margin:34px auto 0;background:var(--panel);border:1px solid var(--line);border-radius:16px;overflow:hidden;box-shadow:0 30px 60px -38px rgba(32,36,43,.3)}
+.repbig .acts{padding:20px 26px}.repbig .acts .h{font-weight:800;font-size:14px;text-transform:uppercase;letter-spacing:.1em;color:var(--ink-soft);margin-bottom:12px}
+.repbig .act{display:flex;gap:12px;align-items:flex-start;padding:10px 0;border-bottom:1px solid var(--line2);font-size:16px}.repbig .act:last-child{border:none}
+.repbig .act .b{flex:0 0 auto;width:24px;height:24px;border-radius:6px;background:var(--petrol-soft);color:var(--petrol);font-weight:800;font-size:12px;display:grid;place-items:center;margin-top:2px}.repbig .act b{color:var(--ink)}</style><div class="topbar" id="top"><div class="wrap">
+<a class="logo" href="/"><span class="mark"><i></i><i></i><i></i><i></i></span>
+<span><span class="name">AuftragsRadar</span><br><span class="sub">für Solarbetriebe</span></span></a>
+<a href="#check" class="btn navhide">Kostenlosen Angebotsprozess-Check</a></div></div><header class="hero"><div class="wrap hero-grid"><div>
+<span class="tagline"><span class="d"></span>Für Solar / PV-Betriebe mit 5–50 Mitarbeitern</span>
+<h1>Solarbetriebe schreiben genug Angebote. Aber zu viele werden nie entschieden.</h1>
+<p class="lead">AuftragsRadar verfolgt eure offenen Solarangebote, fasst Interessenten systematisch nach und zeigt dem Chef jede Woche, welcher Umsatz noch offenliegt. Ohne neues CRM. Ohne dass euer Büro umlernen muss.</p>
+<div class="hero-cta"><a href="#check" class="btn">Kostenlosen Angebotsprozess-Check anfragen</a><a href="#report" class="btn btn-ghost">Beispiel-Report</a></div>
+<div class="cc-line"><span class="ic">→</span><span>Ihr setzt uns bei rausgehenden Angeboten in CC. Wir verfolgen den Vorgang. Ihr bekommt jede Woche Klarheit.</span></div>
+</div><div class="reveal" id="report"><div class="rcard">
+<div class="rh"><div><div class="lbl">Wochenreport</div><div class="t">Musterbetrieb Solar / PV</div></div><div class="wk">KW 22</div></div>
+<div class="open"><div class="cap">Offener Angebotswert</div><div class="big">112.000 €</div></div>
+<div class="grid">
+<div class="cell heiss"><div class="n">5</div><div class="k">Heiß — bald entschieden</div></div>
+<div class="cell fass"><div class="n">12</div><div class="k">Nachfassen nötig</div></div>
+<div class="cell won"><div class="n">+22.400 €</div><div class="k">Gewonnen diese Woche</div></div>
+<div class="cell lost"><div class="n">2</div><div class="k">Verloren — dokumentiert</div></div>
+</div></div></div></div></header><div class="proof"><div class="wrap">
+<span><b>0</b> Vorgänge, die euer Büro pflegt</span><span><b>1×</b> wöchentlich volle Klarheit</span>
+<span><b>14 Tage</b> bis euer Radar steht</span><span><b>🇩🇪</b> AV-Vertrag · Daten in Deutschland</span>
+</div></div><section class="problem"><div class="wrap">
+<span class="eyebrow">Das eigentliche Leck</span>
+<div style="font-size:clamp(24px,3.4vw,36px);font-weight:800;line-height:1.22;max-width:880px;letter-spacing:-.01em;margin-top:12px">Der Auftrag ist nicht weg, weil der Kunde nein gesagt hat. Er ist oft weg, weil niemand rechtzeitig nachgefasst hat.</div>
+<p style="font-size:18px;color:var(--ink-soft);max-width:680px;margin-top:22px">Bei Solar / PV-Angeboten geht es schnell um 15.000, 35.000 Euro und mehr. Der Kunde vergleicht, wartet ein paar Tage und entscheidet sich oft für den Betrieb, der präsenter bleibt. Wenn nach dem Angebot niemand dranbleibt, verschwindet Umsatz, der fast schon im Haus war.</p>
+<div class="pcards" style="margin-top:42px">
+<div class="pcard reveal"><div class="ic">📄</div><h3>Angebote liegen offen</h3><p>Niemand sieht klar, welche Angebote noch entschieden werden müssen.</p></div>
+<div class="pcard reveal"><div class="ic">🎲</div><h3>Nachfassen passiert zufällig</h3><p>Mal ruft jemand an, mal nicht — je nachdem, wie voll die Woche ist.</p></div>
+<div class="pcard reveal"><div class="ic">⏰</div><h3>Der Chef sieht es zu spät</h3><p>Erst wenn der Auftrag verloren ist, merkt man, dass niemand nachgefasst hat.</p></div>
+</div></div></section><section style="background:var(--panel)"><div class="wrap"><div class="sec-head center">
+<span class="eyebrow">So einfach ist der Kern</span><h2>Keine neue Software. Eine externe Nachfass-Zentrale.</h2></div>
+<div class="steps">
+<div class="step reveal"><div class="num">1</div><h3>Ihr setzt uns in CC</h3><p>Bei jedem rausgehenden Angebot — oder ihr leitet es kurz weiter. Mehr nicht.</p></div>
+<div class="step reveal"><div class="num">2</div><h3>Wir verfolgen jedes Angebot</h3><p>Status, Fristen, Rückmeldungen, Nachfasspunkte — wir halten jeden Vorgang im Blick.</p></div>
+<div class="step reveal"><div class="num">3</div><h3>Ihr bekommt den Wochenreport</h3><p>Offener Wert, heiße Chancen, verloren — und die nächsten Aktionen.</p></div>
+</div>
+<div class="repbig reveal"><div class="acts"><div class="h">Chef-Aktionen diese Woche</div><div class="act"><span class="b">1</span><div><b>Kunde Berger</b> — PV + Speicher, 23.900 €. Heute anrufen.</div></div><div class="act"><span class="b">2</span><div><b>Kunde Klein</b> — Angebot 8 Tage offen. Nachfassen.</div></div><div class="act"><span class="b">3</span><div><b>Kunde Roth</b> — Frage zur Förderung offen. Klären.</div></div></div></div>
+</div></section><section><div class="wrap"><div class="crm-box reveal">
+<span class="eyebrow">Wichtig, falls ihr schon was nutzt</span>
+<h2>Wenn ihr schon HERO, Plancraft, ToolTime oder Excel habt: perfekt.</h2>
+<p>Dann habt ihr wahrscheinlich schon irgendwo eine Software. Die Frage ist nur eine andere:</p>
+<div class="ask"><div><span class="q">?</span> Wer betreibt sie täglich?</div><div><span class="q">?</span> Wer schaut jede Woche wirklich rein?</div><div><span class="q">?</span> Wer fasst konsequent nach?</div></div>
+<p style="margin-top:18px">Genau da setzen wir an. Wir ersetzen euer System nicht — wir sorgen dafür, dass offene Angebote nicht liegenbleiben. Ihr habt Software genug. Betrieben wird sie selten.</p>
+</div></div></section><section style="background:var(--bg2)"><div class="wrap"><div class="sec-head center">
+<span class="eyebrow">Ehrlich: nicht für jeden</span><h2>Für Solarbetriebe, bei denen ein verlorenes Angebot richtig weh tut.</h2></div>
+<div class="icp-grid">
+<div class="icp-card yes reveal"><h3><span class="i">✓</span> Passt, wenn …</h3><ul>
+<li><span class="m">✓</span> ihr 5–50 Mitarbeiter habt</li>
+<li><span class="m">✓</span> eure Angebote meist 15.000–35.000 € wert sind</li>
+<li><span class="m">✓</span> ihr regelmäßig Anfragen bekommt</li>
+<li><span class="m">✓</span> der Chef nicht jede offene Chance im Kopf behalten kann</li>
+<li><span class="m">✓</span> Nachfassen bei euch nicht jede Woche systematisch passiert</li></ul></div>
+<div class="icp-card no reveal"><h3><span class="i">✕</span> Passt nicht, wenn …</h3><ul>
+<li><span class="m">✕</span> ihr kaum Angebote schreibt</li>
+<li><span class="m">✕</span> ihr nur Kleinaufträge macht</li>
+<li><span class="m">✕</span> ihr eigentlich neue Leads braucht, nicht bessere Nachfassung</li>
+<li><span class="m">✕</span> ihr ein reines Tool sucht, das ihr selbst pflegen wollt</li></ul></div>
+</div></div></section><section id="check" style="background:var(--panel)"><div class="wrap"><div class="sec-head center">
+<span class="eyebrow">Der Einstieg</span><h2>Erst der Check. Dann der 30-Tage-Pilot.</h2>
+<p>Wir schauen uns kostenlos an, wie eure Anfragen und Angebote laufen. Liegt Umsatz offen, schlagen wir einen 30-Tage-Pilot vor.</p></div>
+<div class="offer-card reveal"><span class="tag">30-Tage-Pilot · Solar / PV</span>
+<h3>Eure externe Nachfass-Zentrale, in 14 Tagen aufgebaut.</h3>
+<p class="pdesc">Im Pilot enthalten:</p>
+<ul>
+<li><span class="c">✓</span> Prozessaufnahme: wie Anfragen und Angebote heute laufen</li>
+<li><span class="c">✓</span> Einrichtung der Nachfass-Zentrale</li>
+<li><span class="c">✓</span> Erfassung aller offenen Angebote</li>
+<li><span class="c">✓</span> Nachfassvorlagen in eurem Ton</li>
+<li><span class="c">✓</span> Wöchentlicher Chef-Report</li>
+<li class="opt"><span class="c">+</span> Optional: Telefon-Nachfassen für die wichtigsten Chancen</li>
+</ul>
+<div class="priceline">Pilot <b class="m">ab 1.500 €</b> für passende Betriebe. Danach Betreuung <b class="m">ab 750 €</b>.</div>
+<a href="#" class="btn">Kostenlosen Angebotsprozess-Check anfragen</a></div>
+<p class="roi"><b>Die Rechnung ist einfach:</b> Ein einziger geretteter Auftrag bezahlt den Pilot um ein Vielfaches. Es geht nicht um Kosten — es geht um den Umsatz, der heute lautlos verschwindet.</p>
+</div></section><section><div class="wrap"><div class="sec-head center"><span class="eyebrow">Häufige Fragen</span><h2>Was Chefs vorher wissen wollen</h2></div>
+<div class="faq-list">
+<div class="faq-item"><button class="faq-q">Müssen wir ein neues Programm lernen?<span class="pm">+</span></button><div class="faq-a"><p>Nein. Ihr setzt uns bei euren Angeboten in CC oder leitet sie kurz weiter. Kein Login, den ihr pflegen müsst.</p></div></div>
+<div class="faq-item"><button class="faq-q">In wessen Namen wird nachgefasst?<span class="pm">+</span></button><div class="faq-a"><p>In eurem, mit vorher abgestimmten Texten. Wir bleiben im Hintergrund.</p></div></div>
+<div class="faq-item"><button class="faq-q">Ruft ihr Kunden auch an?<span class="pm">+</span></button><div class="faq-a"><p>Im Pilot nur bei den heißen, priorisierten Angeboten — genau dort, wo ein Anruf den Auftrag rettet.</p></div></div>
+<div class="faq-item"><button class="faq-q">Was ist mit Datenschutz?<span class="pm">+</span></button><div class="faq-a"><p>AV-Vertrag, Daten in Deutschland, nur bestehende Kundenanfragen — keine Kaltakquise.</p></div></div>
+<div class="faq-item"><button class="faq-q">Was, wenn wir schon Software nutzen?<span class="pm">+</span></button><div class="faq-a"><p>Dann nutzen wir eure Struktur oder ergänzen sie einfach. Entscheidend ist nicht das Tool, sondern dass jemand den Prozess betreibt.</p></div></div>
+</div></div></section><section class="final"><div class="wrap"><span class="eyebrow">Nächster Schritt</span>
+<h2>Finde heraus, wie viel Umsatz bei euch gerade offenliegt.</h2>
+<p>Wir prüfen kostenlos euren Anfrage- und Angebotsprozess. Unverbindlich.</p>
+<a href="#" class="btn">Kostenlosen Angebotsprozess-Check anfragen</a></div></section><footer><div class="wrap">
+<a class="logo" href="/"><span class="mark"><i></i><i></i><i></i><i></i></span>
+<span><span class="name">AuftragsRadar</span><br><span class="sub">für Solarbetriebe</span></span></a>
+<div><a href="/">Start</a> &nbsp;·&nbsp; <a href="#">Impressum</a> &nbsp;·&nbsp; <a href="#">Datenschutz</a> &nbsp;·&nbsp; <a href="#">AV-Vertrag</a> &nbsp;·&nbsp; <a href="#">Kontakt</a></div>
+</div></footer><script>
+var tb=document.getElementById('top');addEventListener('scroll',function(){tb.classList.toggle('scrolled',scrollY>12)});
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.14});
+document.querySelectorAll('.reveal').forEach(function(el,i){el.style.transitionDelay=(i%3)*80+'ms';io.observe(el)});
+document.querySelectorAll('.faq-q').forEach(function(q){q.addEventListener('click',function(){var it=q.parentElement,a=it.querySelector('.faq-a'),o=it.classList.contains('open');document.querySelectorAll('.faq-item.open').forEach(function(x){x.classList.remove('open');x.querySelector('.faq-a').style.maxHeight=null});if(!o){it.classList.add('open');a.style.maxHeight=a.scrollHeight+'px'}})});
+</script></body></html>
